@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en"  data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Stefans Exempel</title>
+    <link rel="shortcut icon" href="https://picocss.com/favicon.ico" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css" />
+    <link rel="stylesheet" href="custom.css" />
+  </head>
+
+  <body>
+    <!-- Header -->
+    <header class="container">
+      <hgroup>
+        <h1>Players</h1>
+        <h2>The Ultimate Database</h2>
+      </hgroup>
+    </header>
+    <!-- ./ Header -->
+
+    <!-- Main -->
+    <main class="container">
+      <section id="test">
+
+        <button id="addNew">New</button>
+        <table role="grid" id="allPlayers">
+          <thead>
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Jersey</th>
+              <th scope="col">Age</th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+      </table>
+      </section>
+
+    </main>
+    <!-- ./ Main -->
+
+    <!-- Footer -->
+    <footer class="container">
+      <small
+        >Built with <a href="https://picocss.com">Pico</a> •
+        <a href="https://github.com/picocss/examples/blob/master/v1-basic-template/"
+          >Source code</a
+        ></small
+      >
+    </footer>
+    <!-- ./ Footer -->
+
+    <!-- Modal example -->
+    <dialog id="modal-example">
+      <article>
+        <a
+          href="#close"
+          aria-label="Close"
+          class="close"
+          data-target="modal-example"
+          onclick="toggleModal(event)"
+        ></a>
+        <h3>Confirm your action!</h3>
+        <p>
+          Cras sit amet maximus risus. Pellentesque sodales odio sit amet augue finibus
+          pellentesque. Nullam finibus risus non semper euismod.
+        </p>
+        <footer>
+          <a
+            href="#cancel"
+            role="button"
+            class="secondary"
+            data-target="modal-example"
+            onclick="toggleModal(event)"
+            >Cancel</a><a href="#confirm" role="button" data-target="modal-example" onclick="toggleModal(event)"
+            >Confirm</a>
+        </footer>
+      </article>
+    </dialog>
+
+
+    <div class="modal micromodal-slide" id="modal-1" aria-hidden="true">
+      <form id="editForm">
+        <div class="modal__overlay" tabindex="-1" data-micromodal-close>
+        <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
+          <header class="modal__header">
+            <h2 class="modal__title" id="modal-1-title">
+              Edit
+            </h2>
+          </header>
+          <main class="modal__content" id="modal-1-content">
+              <p>
+                <input id="playerId" type="hidden" />
+                <label>Name</label>
+                  <input
+                    type="text"
+                    name="playerName"
+                    id="playerName"
+                    placeholder="Player name"
+                    aria-label="Player name"
+                    required
+                  />
+                  <label>Jersey</label>
+                  <input
+                    type="number"
+                    name="jersey"
+                    id="jersey"
+                    placeholder=""
+                    aria-label="Jersey"
+                    required
+                  />
+                  <label>Age</label>
+                    <input
+                    type="number"
+                    name="age"
+                    id="age"
+                    placeholder=""
+                    aria-label="age"
+                  />
+
+                  <label>Born</label>
+                    <input
+                    type="text"
+                    name="born"
+                    id="born"
+                    placeholder=""
+                    aria-label="born"
+                  />
+
+      
+            </p>
+          </main>
+          <footer class="modal__footer">
+            <button type="submit" id="save">Save</button>
+            <button  data-micromodal-close aria-label="Close this dialog window">Cancel</button>
+          </footer>
+        </div>
+      </div>
+    </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+
+
+
+    <script src="https://unpkg.com/micromodal/dist/micromodal.min.js"></script>
+    <script type="module" src="script.js"></script>
+
+  </body>
+</html>
