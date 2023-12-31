@@ -1,8 +1,50 @@
 // EN VARIABEL SOM ÄR ETT HTMLELEMENT
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import { getFirestore,collection,
+    doc,
+    addDoc,
+    getDoc,
+    getDocs,
+    updateDoc,
+    deleteDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+const firebaseConfig = {
+    apiKey: "AIzaSyA9E4VBkGxqbUfX4D7qVJ2-voyoYptBm8Y",
+    authDomain: "hockey-dc850.firebaseapp.com",
+    projectId: "hockey-dc850",
+    storageBucket: "hockey-dc850.appspot.com",
+    messagingSenderId: "464140946635",
+    appId: "1:464140946635:web:d7dfc1e636ae5f40815f4e"
+  };
+const app = initializeApp(firebaseConfig);
+const database = getFirestore(app)
 
-import { loadPlayers } from "./data/players.js"
-import { addPlayer, updatePlayer } from "./data/players.js"
+
+
+
+ async function loadPlayers() {
+    const response = await getDocs(collection(database,"players"))
+    let result = []
+    response.forEach(doc=>{
+        let player = doc.data()
+        player.id = doc.id
+        result.push( player )
+    });
+    return result
+  }
+  async function updatePlayer(player){
+    const product = doc(database, 'players', player.id);    
+    await updateDoc(product, player);
+  }
+  
+  async function addPlayer(player){
+    await addDoc(collection(database, 'players'), player);  
+  }
+  
+
+
 import { createTableTdOrTh } from "./ui/helpers.js"
+
+
 
 // letar vi i DOM
 const btnClickMe = document.getElementById("btnClickMe")
@@ -37,6 +79,8 @@ save.addEventListener("click",async (ev)=>{
 
 
 let playersArray = await loadPlayers()
+console.log(playersArray)
+
 
 const showTable = function(playersArray){
     allPlayersTBody.innerHTML = ""
